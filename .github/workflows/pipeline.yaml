@@ -29,13 +29,13 @@ jobs:
 
 
     - name: Start Node.js app
-      run: npm start
+      run: npm start &
       env:
         APP_PID: $!
 
       
     - name: Ping localhost:4000
-      run: curl localhost
+      run: curl localhost:4000
 
     - name: Stop Node.js app
       run: |
