@@ -1,0 +1,28 @@
+# Set environment variables for New Relic
+env:
+  NODE_ENV: production
+  NEW_RELIC_LICENSE_KEY: 426a90006bfa5ad74a2410796d0ced902ff6NRAL
+  NEW_RELIC_APP_NAME: auto-agent
+
+# Install the New Relic agent
+- name: Install New Relic agent
+  run: npm install --save newrelic
+
+# Generate the New Relic configuration file
+- name: Generate New Relic configuration file
+  run: |
+    echo "exports.config = {" >> newrelic.js
+    echo "  app_name: ['auto-agent']," >> newrelic.js
+    echo "  license_key: '${{ env.NEW_RELIC_LICENSE_KEY }}'," >> newrelic.js
+    echo "  logging: {" >> newrelic.js
+    echo "    level: 'info'" >> newrelic.js
+    echo "  }" >> newrelic.js
+    echo "};" >> newrelic.js
+
+# Copy the New Relic configuration file to the root directory
+- name: Copy New Relic configuration file
+  run: cp newrelic.js ./newrelic.js
+
+# Start the Node.js app
+- name: Start Node.js app
+  run: npm start
