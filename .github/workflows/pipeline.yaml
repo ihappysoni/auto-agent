@@ -27,6 +27,9 @@ jobs:
         echo "  }" >> newrelic.js
         echo "};" >> newrelic.js
     - name: Copy New Relic configuration file
-      run: cp newrelic.js ./newrelic.js
+      run: cp -f newrelic.js .
+
     - name: Start Node.js app
       run: npm start
+
+
