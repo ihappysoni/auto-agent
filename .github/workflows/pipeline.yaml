@@ -15,20 +15,22 @@ jobs:
         node-version: '16.x'
     - name: Install dependencies
       run: npm install
-    # - name: Install New Relic agent
-    #   run: npm install newrelic
-    # - name: Generate New Relic configuration file
-    #   run: |
-    #     echo "exports.config = {" >> newrelic.js
-    #     echo "  app_name: ['auto-agent']," >> newrelic.js
-    #     echo "  license_key: '${{ secrets.NEW_RELIC_LICENSE_KEY }}'," >> newrelic.js
-    #     echo "  logging: {" >> newrelic.js
-    #     echo "    level: 'info'" >> newrelic.js
-    #     echo "  }" >> newrelic.js
-    #     echo "};" >> newrelic.js
+    - name: Install New Relic agent
+      run: npm install newrelic
+    - name: Generate New Relic configuration file
+      run: |
+        echo "exports.config = {" >> newrelic.js
+        echo "  app_name: ['auto-agent']," >> newrelic.js
+        echo "  license_key: '${{ secrets.NEW_RELIC_LICENSE_KEY }}'," >> newrelic.js
+        echo "  logging: {" >> newrelic.js
+        echo "    level: 'info'" >> newrelic.js
+        echo "  }" >> newrelic.js
+        echo "};" >> newrelic.js
 
 
     - name: Start Node.js app
-      run: node index.js
+      run: npm start
 
+    - name: Stop Node.js app
+      run: npm stop
 
