@@ -29,6 +29,6 @@ jobs:
 
 
     - name: Start Node.js app
-      run: npm start
+      run: node index.js
 
 
