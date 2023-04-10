@@ -13,9 +13,9 @@ jobs:
     - uses: actions/checkout@v2
 
       
-    - name: Ping localhost:4000 2000 Times
+    - name: Ping localhost:4000 20000 Times
       run: |
-        for i in {1..2000}; do
-          curl http://20.237.55.108:4002/get_products
-          sleep 1s
+        for i in {1..20000}; do
+          curl http://20.237.55.108:4002/get_products &
         done
+              
