@@ -1,0 +1,21 @@
+name: New Relic Node.js Example
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+    branches: [main]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+      
+    - name: Ping localhost:4000 2000 Times
+      run: |
+        for i in {1..2000}; do
+          curl http://20.237.55.108:4002/get_products
+          sleep 1s
+        done
